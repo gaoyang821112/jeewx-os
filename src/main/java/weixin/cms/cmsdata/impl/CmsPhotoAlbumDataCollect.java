@@ -21,8 +21,10 @@ public class CmsPhotoAlbumDataCollect implements CmsDataCollectI {
 	@Override
 	public void collect(Map<String, String> params) {
 		WeixinPhotoAlbumServiceI weixinPhotoAlbumService = (WeixinPhotoAlbumServiceI) ApplicationContextUtil.getContext().getBean("weixinPhotoAlbumService");
-		String accountid = params.get("accountid")!=null?params.get("accountid").toString():"";
-		List<WeixinPhotoAlbumEntity> photoAlbumList = weixinPhotoAlbumService.findByProperty(WeixinPhotoAlbumEntity.class, "accountid", accountid);
+//		String accountid = params.get("accountid")!=null?params.get("accountid").toString():"";
+//		List<WeixinPhotoAlbumEntity> photoAlbumList = weixinPhotoAlbumService.findByProperty(WeixinPhotoAlbumEntity.class, "accountid", accountid);
+		List<WeixinPhotoAlbumEntity> photoAlbumList = weixinPhotoAlbumService.getList(WeixinPhotoAlbumEntity.class);
+
 		//相册列表
 		CmsDataContent.put(CmsConstant.CMS_DATA_LIST_PHOTO_ALBUM, photoAlbumList);
 		//资源模板先用default 待以后模板功能做好，统一动态传入
